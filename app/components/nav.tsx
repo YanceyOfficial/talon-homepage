@@ -27,19 +27,30 @@ export function Nav() {
       }`}
       style={
         scrolled
-          ? { background: 'linear-gradient(135deg, rgba(15,5,30,0.88) 0%, rgba(10,3,22,0.88) 50%, rgba(12,4,28,0.88) 100%)' }
+          ? {
+              background:
+                'linear-gradient(135deg, rgba(15,5,30,0.88) 0%, rgba(10,3,22,0.88) 50%, rgba(12,4,28,0.88) 100%)'
+            }
           : undefined
       }
     >
       {/* Gradient bottom border — only when scrolled */}
       {scrolled && (
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
+        <div className="absolute right-0 bottom-0 left-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
       )}
 
       <div className="mx-auto flex h-[52px] max-w-[980px] items-center justify-between px-4">
         <div className="flex items-center gap-2">
-          <Image src="/logo/app-icon-transparent.png" alt="Talon" width={24} height={24} className="rounded-md" />
-          <span className="text-sm font-semibold tracking-tight text-white">Talon</span>
+          <Image
+            src="/logo/app-icon-transparent.png"
+            alt="Talon"
+            width={24}
+            height={24}
+            className="rounded-md"
+          />
+          <span className="text-sm font-semibold tracking-tight text-white">
+            Talon
+          </span>
         </div>
 
         <div className="hidden items-center gap-8 text-sm text-white/50 md:flex">

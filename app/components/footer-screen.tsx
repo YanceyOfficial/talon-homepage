@@ -17,18 +17,46 @@ const links = [
   {
     section: 'Resources',
     items: [
-      { label: 'GitHub', href: 'https://github.com/YanceyOfficial/talon', external: true },
-      { label: 'Releases', href: 'https://github.com/YanceyOfficial/talon/releases', external: true },
-      { label: 'Issues', href: 'https://github.com/YanceyOfficial/talon/issues', external: true },
-      { label: 'OpenClaw', href: 'https://github.com/YanceyOfficial/openclaw', external: true }
+      {
+        label: 'GitHub',
+        href: 'https://github.com/YanceyOfficial/talon',
+        external: true
+      },
+      {
+        label: 'Releases',
+        href: 'https://github.com/YanceyOfficial/talon/releases',
+        external: true
+      },
+      {
+        label: 'Issues',
+        href: 'https://github.com/YanceyOfficial/talon/issues',
+        external: true
+      },
+      {
+        label: 'OpenClaw',
+        href: 'https://github.com/YanceyOfficial/openclaw',
+        external: true
+      }
     ]
   },
   {
     section: 'Connect',
     items: [
-      { label: 'Twitter', href: 'https://twitter.com/YanceyOfficial', external: true },
-      { label: 'Sponsor', href: 'https://github.com/sponsors/YanceyOfficial', external: true },
-      { label: 'Product Hunt', href: 'https://www.producthunt.com/posts/talon', external: true }
+      {
+        label: 'Twitter',
+        href: 'https://twitter.com/YanceyOfficial',
+        external: true
+      },
+      {
+        label: 'Sponsor',
+        href: 'https://github.com/sponsors/YanceyOfficial',
+        external: true
+      },
+      {
+        label: 'Product Hunt',
+        href: 'https://www.producthunt.com/posts/talon',
+        external: true
+      }
     ]
   }
 ]
@@ -42,8 +70,16 @@ export function FooterScreen() {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="mb-3 flex items-center gap-2">
-              <Image src="/logo/app-icon-transparent.png" alt="Talon" width={28} height={28} className="rounded-lg" />
-              <h3 className="text-2xl font-black tracking-tight text-white">Talon</h3>
+              <Image
+                src="/logo/app-icon-transparent.png"
+                alt="Talon"
+                width={28}
+                height={28}
+                className="rounded-lg"
+              />
+              <h3 className="text-2xl font-black tracking-tight text-white">
+                Talon
+              </h3>
             </div>
             <p className="mb-6 text-sm leading-relaxed text-white/40">
               The floating AI assistant for macOS. Open source, private, and
@@ -92,7 +128,9 @@ export function FooterScreen() {
                   <li key={item.label}>
                     <a
                       href={item.href}
-                      {...('external' in item && item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                      {...('external' in item && item.external
+                        ? { target: '_blank', rel: 'noopener noreferrer' }
+                        : {})}
                       className="text-sm text-white/50 transition-colors hover:text-white"
                     >
                       {item.label}

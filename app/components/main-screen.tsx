@@ -51,7 +51,13 @@ export function MainScreen() {
           transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="mb-6"
         >
-          <Image src="/logo/app-icon-transparent.png" alt="Talon" width={80} height={80} className="rounded-2xl shadow-2xl shadow-purple-500/20" />
+          <Image
+            src="/logo/app-icon-transparent.png"
+            alt="Talon"
+            width={80}
+            height={80}
+            className="rounded-2xl shadow-2xl shadow-purple-500/20"
+          />
         </motion.div>
 
         {/* Status badge */}
@@ -94,7 +100,8 @@ export function MainScreen() {
           <span
             className="relative inline-block font-semibold text-white/90"
             style={{
-              backgroundImage: 'linear-gradient(90deg, #a78bfa, #818cf8, #c084fc)',
+              backgroundImage:
+                'linear-gradient(90deg, #a78bfa, #818cf8, #c084fc)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -104,8 +111,8 @@ export function MainScreen() {
             OpenClaw
           </span>{' '}
           on your Mac.
-          <br className="hidden sm:block" /> Always on top, always ready —
-          chat with multiple agents at once.
+          <br className="hidden sm:block" /> Always on top, always ready — chat
+          with multiple agents at once.
         </motion.p>
 
         {/* Feature tags */}
@@ -135,8 +142,15 @@ export function MainScreen() {
           transition={{ duration: 0.8, delay: 1.05, ease: 'easeOut' }}
           className="flex flex-wrap justify-center gap-3"
         >
-          <Button asChild className="h-11 gap-2 rounded-full bg-white px-6 font-semibold text-black hover:bg-white/90">
-            <a href="https://github.com/YanceyOfficial/talon" target="_blank" rel="noopener noreferrer">
+          <Button
+            asChild
+            className="h-11 gap-2 rounded-full bg-white px-6 font-semibold text-black hover:bg-white/90"
+          >
+            <a
+              href="https://github.com/YanceyOfficial/talon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Github className="h-4 w-4" />
               GitHub
             </a>
@@ -156,7 +170,11 @@ export function MainScreen() {
             variant="ghost"
             className="h-11 gap-2 rounded-full px-6 text-white/50 hover:bg-white/5 hover:text-white"
           >
-            <a href="https://github.com/sponsors/YanceyOfficial" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://github.com/sponsors/YanceyOfficial"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Heart className="h-4 w-4" />
               Sponsor
             </a>

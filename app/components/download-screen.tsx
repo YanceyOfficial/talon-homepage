@@ -55,12 +55,32 @@ export function DownloadScreen({ release }: { release: GithubRelease | null }) {
   const version = release?.tag_name ?? FALLBACK_VERSION
   const assets = release?.assets ?? []
 
-  const dmg      = findUrl(assets, /\.dmg$/,              `${FALLBACK_BASE}/talon_${V}_aarch64.dmg`)
-  const tarGz    = findUrl(assets, /\.tar\.gz$/,          `${FALLBACK_BASE}/talon_${V}_aarch64.app.tar.gz`)
-  const exe      = findUrl(assets, /-setup\.exe$|\.exe$/, `${FALLBACK_BASE}/talon_${V}_x64-setup.exe`)
-  const msi      = findUrl(assets, /\.msi$/,              `${FALLBACK_BASE}/talon_${V}_x64_en-US.msi`)
-  const appimage = findUrl(assets, /\.AppImage$/,         `${FALLBACK_BASE}/talon_${V}_amd64.AppImage`)
-  const deb      = findUrl(assets, /\.deb$/,              `${FALLBACK_BASE}/talon_${V}_amd64.deb`)
+  const dmg = findUrl(
+    assets,
+    /\.dmg$/,
+    `${FALLBACK_BASE}/talon_${V}_aarch64.dmg`
+  )
+  const tarGz = findUrl(
+    assets,
+    /\.tar\.gz$/,
+    `${FALLBACK_BASE}/talon_${V}_aarch64.app.tar.gz`
+  )
+  const exe = findUrl(
+    assets,
+    /-setup\.exe$|\.exe$/,
+    `${FALLBACK_BASE}/talon_${V}_x64-setup.exe`
+  )
+  const msi = findUrl(
+    assets,
+    /\.msi$/,
+    `${FALLBACK_BASE}/talon_${V}_x64_en-US.msi`
+  )
+  const appimage = findUrl(
+    assets,
+    /\.AppImage$/,
+    `${FALLBACK_BASE}/talon_${V}_amd64.AppImage`
+  )
+  const deb = findUrl(assets, /\.deb$/, `${FALLBACK_BASE}/talon_${V}_amd64.deb`)
 
   const platforms = [
     {
@@ -72,7 +92,11 @@ export function DownloadScreen({ release }: { release: GithubRelease | null }) {
       border: 'border-zinc-200 dark:border-zinc-700/60',
       iconColor: 'text-zinc-700 dark:text-zinc-300',
       untested: false,
-      primary: { label: 'Download for Mac', sub: 'Universal .dmg · Apple Silicon', url: dmg },
+      primary: {
+        label: 'Download for Mac',
+        sub: 'Universal .dmg · Apple Silicon',
+        url: dmg
+      },
       secondary: [{ label: 'Apple Silicon (.tar.gz)', url: tarGz }]
     },
     {
@@ -84,7 +108,11 @@ export function DownloadScreen({ release }: { release: GithubRelease | null }) {
       border: 'border-blue-100 dark:border-blue-900/50',
       iconColor: 'text-blue-500',
       untested: true,
-      primary: { label: 'Download for Windows', sub: 'Installer .exe · 64-bit', url: exe },
+      primary: {
+        label: 'Download for Windows',
+        sub: 'Installer .exe · 64-bit',
+        url: exe
+      },
       secondary: [{ label: 'Windows Installer (.msi)', url: msi }]
     },
     {
@@ -96,7 +124,11 @@ export function DownloadScreen({ release }: { release: GithubRelease | null }) {
       border: 'border-orange-100 dark:border-orange-900/50',
       iconColor: 'text-orange-500',
       untested: true,
-      primary: { label: 'Download AppImage', sub: 'Portable · No install needed', url: appimage },
+      primary: {
+        label: 'Download AppImage',
+        sub: 'Portable · No install needed',
+        url: appimage
+      },
       secondary: [{ label: '.deb package', url: deb }]
     }
   ]
@@ -109,14 +141,17 @@ export function DownloadScreen({ release }: { release: GithubRelease | null }) {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+          transition={{
+            duration: 0.7,
+            ease: [0.16, 1, 0.3, 1] as [number, number, number, number]
+          }}
           className="mb-16 text-center"
         >
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-1.5 text-sm font-medium text-zinc-500 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-zinc-400">
             <span className="h-2 w-2 rounded-full bg-green-400" />
             Latest release · {version}
           </div>
-          <h2 className="mb-4 text-[56px] font-semibold leading-tight tracking-tight text-zinc-900 dark:text-white">
+          <h2 className="mb-4 text-[56px] leading-tight font-semibold tracking-tight text-zinc-900 dark:text-white">
             Download Talon.
           </h2>
           <p className="mx-auto max-w-md text-xl text-[#86868b]">
@@ -132,7 +167,11 @@ export function DownloadScreen({ release }: { release: GithubRelease | null }) {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.55, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+              transition={{
+                duration: 0.55,
+                delay: i * 0.1,
+                ease: [0.16, 1, 0.3, 1] as [number, number, number, number]
+              }}
               whileHover={{ y: -4 }}
               className={`group flex flex-col overflow-hidden rounded-3xl border ${platform.border} bg-gradient-to-b ${platform.accent} bg-white p-8 shadow-sm transition-shadow duration-300 hover:shadow-xl dark:bg-zinc-900/60`}
             >
@@ -141,8 +180,12 @@ export function DownloadScreen({ release }: { release: GithubRelease | null }) {
                 <div className="flex items-center gap-3">
                   <platform.icon className={`h-9 w-9 ${platform.iconColor}`} />
                   <div>
-                    <p className="text-lg font-semibold text-zinc-900 dark:text-white">{platform.name}</p>
-                    <p className="text-xs text-[#86868b]">{platform.requirement}</p>
+                    <p className="text-lg font-semibold text-zinc-900 dark:text-white">
+                      {platform.name}
+                    </p>
+                    <p className="text-xs text-[#86868b]">
+                      {platform.requirement}
+                    </p>
                   </div>
                 </div>
                 {platform.untested && (
@@ -155,7 +198,9 @@ export function DownloadScreen({ release }: { release: GithubRelease | null }) {
               {/* Warning for untested platforms */}
               {platform.untested && (
                 <p className="mb-5 rounded-xl border border-amber-400/20 bg-amber-400/5 px-3 py-2.5 text-xs leading-relaxed text-amber-600/80 dark:text-amber-400/70">
-                  Tauri supports this platform but Talon has not been tested on {platform.name}. Use at your own risk and feel free to open an issue.
+                  Tauri supports this platform but Talon has not been tested on{' '}
+                  {platform.name}. Use at your own risk and feel free to open an
+                  issue.
                 </p>
               )}
 
@@ -165,8 +210,12 @@ export function DownloadScreen({ release }: { release: GithubRelease | null }) {
                 className="mb-5 flex items-center justify-between rounded-2xl bg-zinc-900 px-5 py-4 transition-all duration-200 hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-100"
               >
                 <div>
-                  <p className="text-sm font-semibold text-white dark:text-zinc-900">{platform.primary.label}</p>
-                  <p className="mt-0.5 text-xs text-zinc-400 dark:text-zinc-500">{platform.primary.sub}</p>
+                  <p className="text-sm font-semibold text-white dark:text-zinc-900">
+                    {platform.primary.label}
+                  </p>
+                  <p className="mt-0.5 text-xs text-zinc-400 dark:text-zinc-500">
+                    {platform.primary.sub}
+                  </p>
                 </div>
                 <Download className="h-4 w-4 shrink-0 text-zinc-400 dark:text-zinc-500" />
               </a>
